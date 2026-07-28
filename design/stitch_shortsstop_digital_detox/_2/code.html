@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>쇼츠스탑 - 홈</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "tertiary": "#ab0b1c",
+                "on-background": "#0b1c30",
+                "primary-container": "#2563eb",
+                "on-error": "#ffffff",
+                "on-primary": "#ffffff",
+                "secondary-fixed-dim": "#ffb690",
+                "surface-dim": "#cbdbf5",
+                "on-secondary": "#ffffff",
+                "tertiary-container": "#cf2c30",
+                "surface-container-highest": "#d3e4fe",
+                "tertiary-fixed-dim": "#ffb3ad",
+                "primary-fixed-dim": "#b4c5ff",
+                "surface-container-low": "#eff4ff",
+                "inverse-primary": "#b4c5ff",
+                "on-tertiary-fixed-variant": "#930013",
+                "tertiary-fixed": "#ffdad7",
+                "on-primary-fixed": "#00174b",
+                "secondary": "#9d4300",
+                "on-surface": "#0b1c30",
+                "surface-container": "#e5eeff",
+                "on-error-container": "#93000a",
+                "primary": "#004ac6",
+                "on-primary-container": "#eeefff",
+                "on-secondary-fixed-variant": "#783200",
+                "surface-container-lowest": "#ffffff",
+                "on-tertiary-container": "#ffecea",
+                "outline-variant": "#c3c6d7",
+                "background": "#f8f9ff",
+                "secondary-container": "#fd761a",
+                "secondary-fixed": "#ffdbca",
+                "error": "#ba1a1a",
+                "surface-container-high": "#dce9ff",
+                "error-container": "#ffdad6",
+                "inverse-on-surface": "#eaf1ff",
+                "outline": "#737686",
+                "on-secondary-fixed": "#341100",
+                "on-primary-fixed-variant": "#003ea8",
+                "on-secondary-container": "#5c2400",
+                "on-tertiary-fixed": "#410004",
+                "surface-tint": "#0053db",
+                "inverse-surface": "#213145",
+                "primary-fixed": "#dbe1ff",
+                "on-tertiary": "#ffffff",
+                "surface-variant": "#d3e4fe",
+                "surface": "#f8f9ff",
+                "on-surface-variant": "#434655",
+                "surface-bright": "#f8f9ff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "base": "8px",
+                "container-padding": "20px",
+                "stack-lg": "40px",
+                "gutter": "16px",
+                "stack-md": "24px",
+                "stack-sm": "12px"
+            },
+            "fontFamily": {
+                "display-lg": ["Hanken Grotesk"],
+                "body-md": ["Hanken Grotesk"],
+                "headline-lg-mobile": ["Hanken Grotesk"],
+                "label-sm": ["JetBrains Mono"],
+                "headline-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Hanken Grotesk', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .circular-progress {
+            background: conic-gradient(
+                #22c55e 0% 60%, 
+                #eab308 60% 85%, 
+                #ef4444 85% 100%
+            );
+        }
+        .mask-inner {
+            background: #f8f9ff;
+            clip-path: circle(44%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-background dark:bg-background">
+<div class="flex items-center justify-between px-container-padding py-base w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" data-icon="shield_lock">shield_lock</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed-dim">쇼츠스탑</h1>
+</div>
+<button class="hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-container-padding">
+<!-- Hero Section: Circular Progress -->
+<section class="mt-stack-lg flex flex-col items-center justify-center text-center">
+<div class="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center">
+<!-- Circular Progress Ring (Simulated) -->
+<div class="absolute inset-0 rounded-full circular-progress opacity-20"></div>
+<div class="absolute inset-2 rounded-full border-[12px] border-primary-container/20"></div>
+<!-- Dynamic Masking Circle -->
+<div class="absolute inset-0 rounded-full border-[12px] border-primary" style="clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 20%);"></div>
+<div class="z-10 flex flex-col items-center">
+<span class="text-label-sm font-label-sm text-outline tracking-widest">오늘 사용량</span>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="font-display-lg text-display-lg text-on-background">42</span>
+<span class="font-headline-lg text-headline-lg text-outline">/ 60분</span>
+</div>
+<p class="mt-2 text-label-sm font-label-sm text-tertiary font-bold px-3 py-1 bg-tertiary/10 rounded-full">남은 시간 18분</p>
+</div>
+</div>
+<div class="mt-stack-md w-full max-w-sm">
+<button class="w-full bg-primary text-on-primary font-bold py-4 rounded-full flex items-center justify-center gap-2 shadow-lg shadow-primary/20 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="timer">timer</span>
+                    제한 기능 시작
+                </button>
+<p class="mt-4 text-label-sm font-label-sm text-on-surface-variant">버튼을 누르면 숏폼 앱 실행이 차단됩니다.</p>
+</div>
+</section>
+<!-- Bento Summary Section -->
+<section class="mt-stack-lg grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- AI Suggestion Card -->
+<div class="bg-surface-container-low border border-outline-variant p-stack-md rounded-xl flex flex-col gap-3">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-xl" data-icon="auto_awesome">auto_awesome</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-[18px]">AI 맞춤 조언</h3>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant leading-relaxed">
+                    오후 2시부터 4시 사이의 도파민 수치가 가장 높습니다. 이 시간에는 휴대폰 대신 <span class="text-primary font-bold">15분 산책</span>을 권장해요.
+                </p>
+</div>
+<!-- Stats Card -->
+<div class="grid grid-cols-2 gap-gutter">
+<div class="bg-surface-container-highest border border-outline-variant p-stack-md rounded-xl flex flex-col justify-between">
+<span class="material-symbols-outlined text-secondary" data-icon="trending_down">trending_down</span>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">어제보다</p>
+<p class="text-headline-lg font-headline-lg text-secondary">-12%</p>
+</div>
+</div>
+<div class="bg-surface-container-highest border border-outline-variant p-stack-md rounded-xl flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary" data-icon="workspace_premium">workspace_premium</span>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">집중 점수</p>
+<p class="text-headline-lg font-headline-lg text-primary">85점</p>
+</div>
+</div>
+</div>
+<!-- Image/Mood Card -->
+<div class="md:col-span-2 relative h-48 rounded-xl overflow-hidden group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A serene digital illustration of a young person sitting by a large window looking at a peaceful sunset. The style is modern, minimalist, and digital art-focused with soft gradients of blue, orange, and purple. The lighting is calm and cinematic, representing a high-quality 'breathing space' aesthetic for digital wellness." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwH-AxRyLAa-Htj-fvP-fy574KgyeXXuBWcV29dL3nMLNXGj0V92Su4DFMivh0KTuFHP08MzTXej66L5RHdWIlHnZ_E6Gpq62GY4_9OXq_FY38vL-IzFtKU9DjjxPaDRaoYjrxFVG0r-vpCrs2t_8ftQKRtbKsv622_K-XtEfmGNKel4vo5EM2wluwDH5uqKy3Ip2JRAnpmEce2jcyrlePVrhPR3IuN3YGlBA2rlbztZbkyn80hzATZBzLN-DhDrGF66_I4SHSKw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-stack-md">
+<div class="text-white">
+<p class="font-headline-lg-mobile text-headline-lg-mobile text-[20px]">잠시 디지털 단식을 가져보세요</p>
+<p class="text-body-md opacity-80">뇌가 휴식할 수 있는 최적의 시간입니다.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-container-padding pb-6 pt-2 bg-surface dark:bg-surface-container-lowest border-t border-outline-variant dark:border-outline">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm mt-0.5">홈</span>
+</a>
+<!-- Analysis -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-full transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="font-label-sm text-label-sm mt-0.5">분석</span>
+</a>
+<!-- Settings -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-full transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-sm text-label-sm mt-0.5">설정</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for the progress circle or button
+        document.querySelector('button.bg-primary').addEventListener('click', function() {
+            const btn = this;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="sync">sync</span> 처리 중...';
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                alert('숏폼 차단 기능이 활성화되었습니다.');
+            }, 1000);
+        });
+    </script>
+</body></html>

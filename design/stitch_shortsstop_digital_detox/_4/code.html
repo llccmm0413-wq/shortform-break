@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>쇼츠스탑 - 제한 기능 설정</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#ab0b1c",
+                    "on-background": "#0b1c30",
+                    "primary-container": "#2563eb",
+                    "on-error": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#ffb690",
+                    "surface-dim": "#cbdbf5",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#cf2c30",
+                    "surface-container-highest": "#d3e4fe",
+                    "tertiary-fixed-dim": "#ffb3ad",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "surface-container-low": "#eff4ff",
+                    "inverse-primary": "#b4c5ff",
+                    "on-tertiary-fixed-variant": "#930013",
+                    "tertiary-fixed": "#ffdad7",
+                    "on-primary-fixed": "#00174b",
+                    "secondary": "#9d4300",
+                    "on-surface": "#0b1c30",
+                    "surface-container": "#e5eeff",
+                    "on-error-container": "#93000a",
+                    "primary": "#004ac6",
+                    "on-primary-container": "#eeefff",
+                    "on-secondary-fixed-variant": "#783200",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#ffecea",
+                    "outline-variant": "#c3c6d7",
+                    "background": "#f8f9ff",
+                    "secondary-container": "#fd761a",
+                    "secondary-fixed": "#ffdbca",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#dce9ff",
+                    "error-container": "#ffdad6",
+                    "inverse-on-surface": "#eaf1ff",
+                    "outline": "#737686",
+                    "on-secondary-fixed": "#341100",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-secondary-container": "#5c2400",
+                    "on-tertiary-fixed": "#410004",
+                    "surface-tint": "#0053db",
+                    "inverse-surface": "#213145",
+                    "primary-fixed": "#dbe1ff",
+                    "on-tertiary": "#ffffff",
+                    "surface-variant": "#d3e4fe",
+                    "surface": "#f8f9ff",
+                    "on-surface-variant": "#434655",
+                    "surface-bright": "#f8f9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "container-padding": "20px",
+                    "stack-lg": "40px",
+                    "gutter": "16px",
+                    "stack-md": "24px",
+                    "stack-sm": "12px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "label-sm": ["JetBrains Mono"],
+                    "headline-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Hanken Grotesk', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .custom-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #004ac6;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky z-40 bg-background dark:bg-background">
+<div class="flex items-center justify-between px-container-padding py-base w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">shield_lock</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed-dim">쇼츠스탑</h1>
+</div>
+<button class="hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-on-surface-variant">help_outline</span>
+</button>
+</div>
+</header>
+<main class="px-container-padding max-w-2xl mx-auto mt-stack-md space-y-stack-lg">
+<!-- Header Section -->
+<section>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background mb-base">제한 기능 설정</h2>
+<p class="text-body-md text-on-surface-variant">사용자의 중독 정도에 맞춰 디지털 환경을 조절하세요. AI가 추천하는 강도 설정을 따르거나 직접 수정할 수 있습니다.</p>
+</section>
+<!-- Setting Levels Grid -->
+<div class="grid gap-stack-md">
+<!-- Low Intensity (하) -->
+<div class="bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl transition-all hover:border-primary/50">
+<div class="flex items-center justify-between mb-stack-sm">
+<div class="flex items-center gap-base">
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant tracking-widest">강도: 하 (SOFT)</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">info</span>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-body-md font-bold text-on-surface">중지 권장 메세지</h3>
+<p class="text-label-sm text-on-surface-variant">15분마다 사용 중지 장려 알림 수신</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<!-- Medium Intensity (중) -->
+<div class="bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl transition-all hover:border-primary/50">
+<div class="flex items-center justify-between mb-stack-sm">
+<div class="flex items-center gap-base">
+<div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant tracking-widest">강도: 중 (MODERATE)</span>
+</div>
+</div>
+<div class="space-y-stack-md">
+<!-- Toggle -->
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-body-md font-bold text-on-surface">화면 흑백 전환</h3>
+<p class="text-label-sm text-on-surface-variant">시각적 자극을 낮추기 위해 색상 제거</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Slider -->
+<div class="space-y-base">
+<div class="flex justify-between items-center">
+<h3 class="font-body-md font-bold text-on-surface">최대 소리 크기 제한</h3>
+<span class="text-label-sm font-label-sm text-primary">50%</span>
+</div>
+<input class="w-full h-2 bg-surface-container-high rounded-lg appearance-none cursor-pointer custom-slider" max="100" min="0" type="range" value="50"/>
+<div class="flex justify-between text-[10px] text-on-surface-variant uppercase tracking-tighter">
+<span>Mute</span>
+<span>Normal</span>
+</div>
+</div>
+</div>
+</div>
+<!-- High Intensity (상) -->
+<div class="bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl transition-all hover:border-primary/50 relative overflow-hidden">
+<div class="flex items-center justify-between mb-stack-sm">
+<div class="flex items-center gap-base">
+<div class="w-2 h-2 rounded-full bg-red-500"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant tracking-widest">강도: 상 (STRICT)</span>
+</div>
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-body-md font-bold text-on-surface">무한 스크롤 금지</h3>
+<p class="text-label-sm text-on-surface-variant">일정 스크롤 후 페이지 고정</p>
+</div>
+<button class="px-6 py-2 rounded-full border border-outline text-on-surface font-label-sm hover:bg-surface-container-high transition-colors" id="strictModeBtn">
+                        비활성화
+                    </button>
+</div>
+<!-- Graphic Hint -->
+<div class="mt-stack-sm flex justify-center opacity-40">
+<div class="w-full h-1 bg-gradient-to-r from-green-300 via-yellow-300 to-red-300 rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Apply Button -->
+<div class="py-stack-md">
+<button class="w-full py-4 bg-primary text-on-primary rounded-full font-headline-lg-mobile flex items-center justify-center gap-base hover:opacity-90 active:scale-[0.98] transition-all shadow-lg shadow-primary/20">
+                적용하기
+                <span class="material-symbols-outlined">check_circle</span>
+</button>
+</div>
+<!-- AI Analysis Context (Bento style) -->
+<section class="grid grid-cols-2 gap-gutter">
+<div class="col-span-2 bg-surface-container-low p-stack-md rounded-xl flex items-start gap-gutter">
+<div class="bg-white p-base rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-primary">insights</span>
+</div>
+<div>
+<h4 class="font-body-md font-bold text-on-surface">AI 분석 리포트</h4>
+<p class="text-label-sm text-on-surface-variant leading-relaxed">지난 24시간 동안 사용자의 도파민 자극이 45% 증가했습니다. '강도: 상' 설정을 권장합니다.</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-stack-md rounded-xl flex flex-col items-center justify-center gap-base text-center">
+<span class="text-headline-lg font-headline-lg text-primary">82</span>
+<span class="text-label-sm text-on-surface-variant">집중력 지수</span>
+</div>
+<div class="bg-surface-container-low p-stack-md rounded-xl flex flex-col items-center justify-center gap-base text-center">
+<span class="text-headline-lg font-headline-lg text-secondary">3h</span>
+<span class="text-label-sm text-on-surface-variant">절약된 시간</span>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-container-padding pb-6 pt-2 bg-surface dark:bg-surface-container-lowest border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">홈</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-label-sm text-label-sm mt-1">분석</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-transform active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-sm text-label-sm mt-1">설정</span>
+</a>
+</nav>
+<script>
+        // Simple Interaction logic
+        const strictBtn = document.getElementById('strictModeBtn');
+        let isStrict = false;
+        strictBtn.addEventListener('click', () => {
+            isStrict = !isStrict;
+            if(isStrict) {
+                strictBtn.textContent = '활성화됨';
+                strictBtn.classList.remove('border-outline');
+                strictBtn.classList.add('bg-primary', 'text-on-primary', 'border-transparent');
+            } else {
+                strictBtn.textContent = '비활성화';
+                strictBtn.classList.add('border-outline');
+                strictBtn.classList.remove('bg-primary', 'text-on-primary', 'border-transparent');
+            }
+        });
+    </script>
+</body></html>

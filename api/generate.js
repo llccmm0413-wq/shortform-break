@@ -1,11 +1,4 @@
 // api/generate.js
-// Vercel Serverless Function (Node.js runtime)
-// 사용자가 입력한 "숏폼 절제 관련 요청"을 Gemini API로 분석하여
-// 필요한 제한 기능 목록을 추천해서 돌려줍니다.
-//
-// 필수 환경변수: GEMINI_API_KEY  (Vercel 대시보드 > Settings > Environment Variables 에서 설정)
-// 선택 환경변수: GEMINI_MODEL    (기본값: gemini-2.0-flash)
-
 const SYSTEM_PROMPT = `너는 "숏츠 브레이크"라는 숏폼(쇼츠, 릴스, 틱톡 등) 시청 절제 앱의 기능 기획 전문가야.
 사용자가 자신의 숏폼 시청 습관이나 고민을 이야기하면, 그 상황에 맞춰 앱에 넣으면 좋을 "구체적인 제한/절제 기능"을 추천해줘.
 
@@ -45,12 +38,9 @@ module.exports = async function handler(req, res) {
     res.status(400).json({ error: '분석할 내용을 입력해주세요.' });
     return;
   }
-  if (message.length > 2000) {
-    res.status(400).json({ error: '입력이 너무 깁니다. 2000자 이내로 작성해주세요.' });
-    return;
-  }
 
-  const model = process.env.GEMINI_MODEL || 'gemini-2.0-flash';
+  // 안전하고 호환성이 보장된 gemini-1.5-flash 모델 사용
+  const model = process.env.GEMINI_MODEL || 'gemini-1.5-flash';
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
 
   try {
@@ -61,46 +51,40 @@ module.exports = async function handler(req, res) {
         contents: [
           {
             role: 'user',
-            parts: [{ text: message.trim() }]
+            parts: [
+              { text: `${SYSTEM_PROMPT}\n\n[사용자 입력]\n${message.trim()}` }
+            ]
           }
         ],
-        systemInstruction: {
-          parts: [{ text: SYSTEM_PROMPT }]
-        },
         generationConfig: {
           temperature: 0.7,
-          maxOutputTokens: 600
+          maxOutputTokens: 800
         }
       })
     });
 
-   if (!geminiRes.ok) {
-      const errText = await geminiRes.text();
-      console.error('Gemini API error:', geminiRes.status, errText);
+    const data = await geminiRes.json();
 
-      // 429 (사용량 초과 / Rate Limit) 에러 처리 추가
-      if (geminiRes.status === 429) {
-        res.status(429).json({ error: '요청이 너무 많습니다. 1~2분 후 다시 시도해 주세요.' });
-        return;
-      }
-
-      res.status(502).json({ error: 'AI 분석 요청이 실패했습니다. 잠시 후 다시 시도해주세요.' });
+    if (!geminiRes.ok) {
+      console.error('Gemini API 상세 에러:', JSON.stringify(data));
+      // 클라이언트에 구글이 뱉은 진짜 에러 메시지를 전달하여 원인 파악
+      res.status(geminiRes.status).json({ 
+        error: `Gemini API 오류 (${geminiRes.status}): ${data?.error?.message || '알 수 없는 오류'}` 
+      });
       return;
     }
 
-    const data = await geminiRes.json();
     const result =
-      data?.candidates?.[0]?.content?.parts?.map((p) => p.text || '').join('').trim() ||
-      '';
+      data?.candidates?.[0]?.content?.parts?.map((p) => p.text || '').join('').trim() || '';
 
     if (!result) {
-      res.status(502).json({ error: 'AI가 응답을 생성하지 못했습니다. 다시 시도해주세요.' });
+      res.status(502).json({ error: 'AI가 응답을 생성하지 못했습니다.' });
       return;
     }
 
     res.status(200).json({ result });
   } catch (err) {
     console.error('Server error:', err);
-    res.status(500).json({ error: '서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.' });
+    res.status(500).json({ error: `서버 내부 오류가 발생했습니다: ${err.message}` });
   }
 };

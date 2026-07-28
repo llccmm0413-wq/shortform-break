@@ -1,0 +1,12 @@
+{
+  "name": "shorts-break",
+  "version": "1.0.0",
+  "private": true,
+  "description": "숏폼(쇼츠) 시청 절제를 돕는 AI 기능 추천 웹앱",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@vercel/kv": "^2.0.0"
+  }
+}

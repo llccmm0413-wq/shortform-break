@@ -50,7 +50,7 @@ module.exports = async function handler(req, res) {
     return;
   }
 
-  const model = process.env.GEMINI_MODEL || 'gemini-1.5-flash';
+  const model = process.env.GEMINI_MODEL || 'gemini-2.0-flash';
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
 
   try {
@@ -74,9 +74,16 @@ module.exports = async function handler(req, res) {
       })
     });
 
-    if (!geminiRes.ok) {
+   if (!geminiRes.ok) {
       const errText = await geminiRes.text();
       console.error('Gemini API error:', geminiRes.status, errText);
+
+      // 429 (사용량 초과 / Rate Limit) 에러 처리 추가
+      if (geminiRes.status === 429) {
+        res.status(429).json({ error: '요청이 너무 많습니다. 1~2분 후 다시 시도해 주세요.' });
+        return;
+      }
+
       res.status(502).json({ error: 'AI 분석 요청이 실패했습니다. 잠시 후 다시 시도해주세요.' });
       return;
     }
